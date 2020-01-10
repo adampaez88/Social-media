@@ -1,7 +1,6 @@
 import React from 'react'
 import 'font-awesome/css/font-awesome.min.css'
 
-
 export default function Post({post}) {
     return (
         <div className='a-post' >
@@ -10,7 +9,6 @@ export default function Post({post}) {
                 <button>likes:{post.like}</button> 
                 <button>dislikes: {post.dislike}</button>
             </div>
-
             <h1>{post.content}</h1>
         </div>
     )

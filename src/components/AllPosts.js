@@ -4,11 +4,9 @@ import Post from './Post'
 
 function AllPosts({posts}){
 
-
     const eachPost = posts.map(post => {
         return  <Post post={post} />
     })
-
 
     return(
         <div>
@@ -17,13 +15,9 @@ function AllPosts({posts}){
                 <div className='news-feed-container'>
                     {eachPost}
                 </div>
-
-                <div className='aside-container'>
-                    {/* <aside> */}
+                    <aside>
                         <ChatRoom />
-                    {/* </aside> */}
-                </div>
-                
+                    </aside>
             </div>
         </div>
        
