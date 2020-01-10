@@ -28,7 +28,8 @@ body {
   /* background-color: #FBD1A2; */
   /* background-color: #F79256; */
   /* background-color: #7DCFB6; */
-  background-color: #A3BAC3;
+  background-color: #FED766;
+  /* background-color: #A3BAC3; */
   margin-bottom: 5%;
 
 }
@@ -53,6 +54,8 @@ table {
 }
 
 header {
+  /* position: sticky; */
+  /* top: 0; */
   /* background-color: rgb(58, 57, 57); */
   background-color: #1ebce1;
   height: 5rem;
@@ -93,23 +96,9 @@ header {
   justify-content: space-between;
 }
 
-.aside-container {
+aside {
   position: sticky;
   top: 0;
-  width: 25%;
-  border: solid black;
-  font-size: 1.5rem;
-  height: 35rem;
-  padding-left: .5rem;
-  margin-top: 5%;
-  margin-left: .5rem;
-  float: right;
-  box-shadow: inset 5px 0 5px -5px #29627e;
-  font-style: italic;
-  color: black;
-}
-
-/* aside {
   width: 25%;
   border: solid black;
   font-size: 1.5rem;
@@ -120,7 +109,7 @@ header {
   float: right;
   box-shadow: inset 5px 0 5px -5px #29627e;
   font-style: italic;
-} */
+}
 
 .news-feed {
   margin-right: 27%;
@@ -136,7 +125,7 @@ header {
 }
 
 .a-post {
-  border: solid;
+  border: solid grey;
   background-color: black;
   color: aliceblue;
   font-size: 1.5rem;

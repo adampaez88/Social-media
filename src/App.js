@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from './components/Header'
 import Footer from './components/Footer'
 import AllPosts from './components/AllPosts'
-// import ChatRoom from './components/ChatRoom'
 import 'font-awesome/css/font-awesome.min.css'
 import './App.css';
 
@@ -31,10 +30,10 @@ class App extends Component{
       headers: {
         'Content-Type': 'application/json'
       },
-      body: {
+      body: JSON.stringify({
         'image_url': post.image_url,
         'content': post.content
-      }
+      })
     })
   }
   
@@ -47,9 +46,6 @@ class App extends Component{
   
         <div>
           <AllPosts posts={this.state.posts}/>
-          {/* <aside>
-            <ChatRoom />
-          </aside> */}
         </div> 
   
         <footer>
@@ -59,5 +55,4 @@ class App extends Component{
     );
   }
 }
-
 export default App;
