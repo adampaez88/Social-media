@@ -25,7 +25,7 @@ class Header extends Component{
                 </form>
 
                 <div className='header-items'>
-                    <button className='header-buttons'onClick={this.handleClick}>
+                    <button className='header-buttons' onClick={this.handleClick}>
                         {show ? 'Close' : 'Add Post'}
                     </button>
                 </div>

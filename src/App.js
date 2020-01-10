@@ -32,7 +32,8 @@ class App extends Component{
       },
       body: JSON.stringify({
         'image_url': post.image_url,
-        'content': post.content
+        'content': post.content,
+        'user_id': 1
       })
     })
   }

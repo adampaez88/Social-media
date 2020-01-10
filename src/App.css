@@ -28,7 +28,8 @@ body {
   /* background-color: #FBD1A2; */
   /* background-color: #F79256; */
   /* background-color: #7DCFB6; */
-  background-color: #FED766;
+  background-color: #E6E6EA;
+  /* background-color: #FED766; */
   /* background-color: #A3BAC3; */
   margin-bottom: 5%;
 
@@ -51,6 +52,10 @@ table {
 
 .App {
   text-align: center;
+}
+
+button {
+  cursor: pointer;
 }
 
 header {
@@ -114,6 +119,7 @@ aside {
 .news-feed {
   margin-right: 27%;
   margin-top: 1%;
+  font-size: 2rem;
 }
 
 .news-feed-container {
@@ -145,6 +151,18 @@ aside {
 
 .post-buttons {
   margin: 2%;
+}
+
+.comment-form {
+  margin-bottom: 2%;
+}
+
+.comment-submit {
+  cursor: pointer;
+}
+
+.a-comment {
+  margin-bottom: 2%;
 }
 
 footer {
