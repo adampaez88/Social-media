@@ -3,16 +3,57 @@ import React, { Component } from 'react'
 export default class Comments extends Component{
 
     state = {
+        comments: [],
         content: ''
+    }
+
+    componentDidMount(){
+        fetch('http://localhost:8000/comments')
+            .then(response => response.json())
+            .then(commentsData => this.setState({
+                comments: commentsData
+            }))
+    }
+
+    filterComments = () => {
+        return this.state.comments.filter(comment => {
+            return comment.post_id === this.props.post.id
+        })
+    }
+
+    addComment = (comment) => {
+        fetch('http://localhost:8000/comments', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            'content': comment.content,
+            'post_id': this.props.post.id,
+            'user_id': 1,
+            'like': comment.like
+          })
+        })
+        .then(response => response.json())
+        .then(comment => {
+            this.setState({comments: [...this.state.comments, comment]})
+        })
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.addComment(this.state)
+        this.addComment(this.state)
         this.setState({
             content: ''
         })
     }
+
+    // likeClick = () => {
+    //     this.state.comments.map(comment => {
+    //         let count = comment.like
+    //         return count += 1
+    //     })
+    // }
 
     handleChange = (event) => {
         const {name, value} = event.target
@@ -20,14 +61,25 @@ export default class Comments extends Component{
             [name]: value
         })
     }
-    
-    render(){
-        const {comments, show, handleClick} = this.props
-        const eachComment = comments.map(comment => {
+
+    eachComment = () => {
+        return this.filterComments().map(comment => {
             return( 
-               <li className='a-comment'>{comment.content}</li>
+                <div className='comment-list'>
+                 <li className='a-comment'>{comment.content}</li>
+                 <div>
+                    <button>Like: {comment.like}</button>
+                    <button>Delete</button>
+                 </div>
+               </div>
             )
         })
+    }
+    
+    render(){
+        // const {comments, show, handleClick} = this.props
+        const {show, handleClick} = this.props
+       
         return (
             <div className='comments-div'>
     
@@ -43,7 +95,7 @@ export default class Comments extends Component{
                     <input type='submit' className='comment-submit'/>
                 </form>
                 <ul>
-                    {eachComment}
+                    {this.eachComment()}
                 </ul>
             </div>
         )
