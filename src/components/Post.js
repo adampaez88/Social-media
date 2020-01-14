@@ -20,7 +20,7 @@ export default class Post extends Component{
             <div className='a-post' >
                 <img src={post.image_url}/>
                 <div className='post-buttons'>
-                    <button>likes:{post.like}</button> 
+                    <button>Likes: {post.like}</button> 
                 </div>
                 <h1>{post.content}</h1>
                 <div>
