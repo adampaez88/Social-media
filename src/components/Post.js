@@ -15,17 +15,18 @@ export default class Post extends Component{
     }
 
     render(){
-        const {post} = this.props
+        const {post, sortByName} = this.props
         return (
             <div className='a-post' >
                 <img src={post.image_url}/>
                 <div className='post-buttons'>
-                    <button>Likes: {post.like}</button> 
+                    <button onClick={ () => this.props.likePost(post.id)}>Likes: {post.like}</button> 
                 </div>
                 <h1>{post.content}</h1>
                 <div>
                 <Comments 
-                    show={this.state.show} handleClick={this.handleClick} post={post}
+                    show={this.state.show} handleClick={this.handleClick} 
+                    post={post} sortByName={sortByName}
                 />
                 </div>
             </div>

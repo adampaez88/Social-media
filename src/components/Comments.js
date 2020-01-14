@@ -48,16 +48,21 @@ export default class Comments extends Component{
         })
     }
 
-    // likeClick = () => {
-    //     this.state.comments.map(comment => {
-    //         let count = comment.like += 1
-    //         fetch(`http://localhost:8000/comments/${comment.id}`, {
-    //             method: 'POST',
-    //             headers: {'Content-Type': 'application/json'},
-    //             body: JSON.stringify({'like': count})
-    //         })
-    //     })
-    // }
+    likeClick = (id) => {
+        const likedComment = this.state.comments.find(comment => {
+            return comment.id === id
+        })
+        console.log(likedComment)
+        this.setState({
+            likedComment
+        })
+        let count = likedComment.like += 1
+        fetch(`http://localhost:8000/comments/${likedComment.id}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({'like': count})
+        })
+    }
 
     handleChange = (event) => {
         const {name, value} = event.target
@@ -67,10 +72,10 @@ export default class Comments extends Component{
     }
 
     deleteClick = (id) => {
-        const urComment = this.state.comments.find(comment => {
+        const aComment = this.state.comments.find(comment => {
             return comment.id === id
         })
-        if (this.props.post.user_id === urComment.user_id){
+        if (this.props.post.user_id === aComment.user_id){
             const comments = this.state.comments.filter(comment => {
                 return comment.id !== id
             })
@@ -84,13 +89,14 @@ export default class Comments extends Component{
     }
 
     eachComment = () => {
-        return this.filterComments().map(comment => {
+        return this.filterComments().sort(this.props.sortByName).map(comment => {
             return( 
                 <div className='comment-list'>
                  <li className='a-comment'>{comment.content}</li>
                  <div>
-                    <button>Likes: {comment.like}</button>
+                    <button onClick={() => this.likeClick(comment.id)}>Likes: {comment.like}</button>
                     <button onClick={() => this.deleteClick(comment.id)}>Delete</button>
+
                  </div>
                </div>
             )
@@ -104,7 +110,7 @@ export default class Comments extends Component{
     
                 <button onClick={handleClick}>Comments</button>
                 <form style={{visibility: show ? "visible" : "hidden"}} 
-                    onSubmit={this.handleSubmit}
+                    onSubmit={this.handleSubmit} className='comments-form'
                 >
                     <input
                         type='text' value={this.state.content}

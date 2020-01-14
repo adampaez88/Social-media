@@ -37,6 +37,21 @@ class App extends Component{
       })
     })
   }
+
+  likePost = (id) => {
+    const likedPost = this.state.posts.find(post => {
+        return post.id === id
+    })
+    this.setState({
+        likedPost
+    })
+    let count = likedPost.like += 1
+    fetch(`http://localhost:8000/posts/${likedPost.id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({'like': count})
+    })
+  }
   
   render(){
     return (
@@ -46,7 +61,7 @@ class App extends Component{
         </header>
   
         <div>
-          <AllPosts posts={this.state.posts}/>
+          <AllPosts likePost={this.likePost} posts={this.state.posts}/>
         </div> 
   
         <footer>
