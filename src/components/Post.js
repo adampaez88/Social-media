@@ -20,7 +20,7 @@ export default class Post extends Component{
             <div className='a-post' >
                 <img src={post.image_url}/>
                 <div className='post-buttons'>
-                    <button onClick={ () => this.props.likePost(post.id)}>Likes: {post.like}</button> 
+                    <button onClick={ () => this.props.likePost(post.id)}><i class="fa fa-thumbs-up"></i> {post.like}</button> 
                 </div>
                 <h1>{post.content}</h1>
                 <div>
