@@ -94,8 +94,9 @@ export default class Comments extends Component{
                 <div className='comment-list'>
                  <li className='a-comment'>{comment.content}</li>
                  <div>
-                    <button onClick={() => this.likeClick(comment.id)}>Likes: {comment.like}</button>
-                    <button onClick={() => this.deleteClick(comment.id)}>Delete</button>
+                    <button onClick={() => this.likeClick(comment.id)}><i className="fa fa-star"></i> {comment.like}</button>
+                    <button onClick={() => this.deleteClick(comment.id)}><i className="fa fa-trash"></i></button>
+                    
 
                  </div>
                </div>
