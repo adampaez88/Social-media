@@ -1,11 +1,30 @@
 import React, { Component } from 'react'
 import PostForm from './PostForm'
+import Auth from './Auth'
 
 class Header extends Component{
 
     state = {
         isClicked: false,
-        show: false
+        show: false,
+        signUp: false,
+        login: false
+    }
+
+    showSignUp = (event) => {
+        this.setState({
+            signUp: !this.state.signUp
+        })
+    }
+
+    showLogin = (event) => {
+        this.setState({
+            login: !this.state.login
+        })
+    }
+
+    logout = (event) => {
+        localStorage.removeItem('token')
     }
 
     handleClick = () => {
@@ -15,7 +34,7 @@ class Header extends Component{
     }
 
     render(){
-        const {show} = this.state
+        const {show, signUp, login} = this.state
         return(
             <div className='header-div'>
                 <div className='header-items'>
@@ -34,8 +53,11 @@ class Header extends Component{
                 </form>
 
                 <div className='header-items'>
-                    <button className='header-buttons'>Login</button>
-                    <button className='header-buttons'>Sign Up</button>
+                <button onClick={this.showLogin}>Login</button>
+                        <button onClick={this.showSignUp}>Sign up</button>
+                        <button onClick={this.logout}>Logout</button>
+                        {login ? <Auth showLogin={this.state.login}/> : null}
+                        {signUp ? <Auth showSignUp={this.state.signUp}/> : null}
                 </div>
             </div>
         )
