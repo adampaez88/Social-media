@@ -9,7 +9,7 @@ export default function Auth({showLogin, showSignUp}) {
         const username = formData.get('username')
         const password = formData.get('password')
 
-        fetch('http://localhost:8000/login', {
+        fetch('http://localhost:8000/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,7 +44,6 @@ export default function Auth({showLogin, showSignUp}) {
             })
         })
         .then(response => response.json())
-        
         .then(stashToken => {
             localStorage.setItem('token', stashToken.token)
         })
