@@ -50,7 +50,6 @@ export default function Auth({showLogin, showSignUp}) {
         event.target.reset()
     }
 
-
     return (
         <div>
             {showSignUp

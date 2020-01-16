@@ -22,16 +22,19 @@ export default class Comments extends Component{
     }
 
     addComment = (comment) => {
+        // const oneComment = this.state.comments.map(comment => {
+        //     return comment.user_id
+        // })
         fetch('http://localhost:8000/comments', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            'content': comment.content,
+            'content': comment,
             'post_id': this.props.post.id,
             'user_id': 1,
-            'like': comment.like
+            'like': 0
           })
         })
         .then(response => response.json())
@@ -42,7 +45,7 @@ export default class Comments extends Component{
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.addComment(this.state)
+        this.addComment(this.state.content)
         this.setState({
             content: ''
         })
@@ -52,7 +55,6 @@ export default class Comments extends Component{
         const likedComment = this.state.comments.find(comment => {
             return comment.id === id
         })
-        console.log(likedComment)
         this.setState({
             likedComment
         })
@@ -96,8 +98,6 @@ export default class Comments extends Component{
                  <div>
                     <button onClick={() => this.likeClick(comment.id)}><i className="fa fa-star"></i> {comment.like}</button>
                     <button onClick={() => this.deleteClick(comment.id)}><i className="fa fa-trash"></i></button>
-                    
-
                  </div>
                </div>
             )
