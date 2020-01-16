@@ -5,7 +5,16 @@ import 'font-awesome/css/font-awesome.min.css'
 export default class Post extends Component{
 
     state = {
-        show: false
+        show: false,
+        users: []
+    }
+
+    componentDidMount(){
+        fetch('http://localhost:8000/users')
+        .then(response => response.json())
+        .then(userData => this.setState({
+            users: userData
+        }))
     }
 
     handleClick = () => {
@@ -15,6 +24,7 @@ export default class Post extends Component{
     }
 
     render(){
+        console.log('user', this.state.users)
         const {post, sortByName} = this.props
         return (
             <div className='a-post' >
@@ -26,7 +36,7 @@ export default class Post extends Component{
                 <div>
                 <Comments 
                     show={this.state.show} handleClick={this.handleClick} 
-                    post={post} sortByName={sortByName}
+                    post={post} sortByName={sortByName} user={this.state.users}
                 />
                 </div>
             </div>
