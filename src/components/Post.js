@@ -24,10 +24,13 @@ export default class Post extends Component{
     }
 
     render(){
-        console.log('user', this.state.users)
+        // const singleUser = this.state.users.map(user => {
+        //     return  user.username
+        // })
         const {post, sortByName} = this.props
         return (
             <div className='a-post' >
+                {/* <h1>User: {singleUser}</h1> */}
                 <img src={post.image_url}/>
                 <div className='post-buttons'>
                     <button onClick={ () => this.props.likePost(post.id)}><i class="fa fa-thumbs-up"></i> {post.like}</button> 
