@@ -54,14 +54,15 @@ class App extends Component{
   }
   
   render(){
+    console.log('label it', this.state.user_id)
     return (
       <div className="App">
         <header>
-          <Header addPost={this.addPost} />
+          <Header setId={this.setId} addPost={this.addPost} />
         </header>
   
         <div>
-          <AllPosts likePost={this.likePost} posts={this.state.posts}/>
+          <AllPosts user_id={this.state.user_id} likePost={this.likePost} posts={this.state.posts}/>
         </div> 
   
         <footer>

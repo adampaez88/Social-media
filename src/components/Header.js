@@ -56,7 +56,7 @@ class Header extends Component{
                 <button onClick={this.showLogin}>Login</button>
                         <button onClick={this.showSignUp}>Sign up</button>
                         <button onClick={this.logout}>Logout</button>
-                        {login ? <Auth showLogin={this.state.login}/> : null}
+                        {login ? <Auth  showLogin={this.state.login}/> : null}
                         {signUp ? <Auth showSignUp={this.state.signUp}/> : null}
                 </div>
             </div>

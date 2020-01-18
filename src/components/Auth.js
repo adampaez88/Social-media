@@ -1,7 +1,6 @@
 import React from 'react'
 
-export default function Auth({showLogin, showSignUp}) {
-
+export default function Auth({showLogin, showSignUp, setId}) {
     const signUp = (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
@@ -46,10 +45,11 @@ export default function Auth({showLogin, showSignUp}) {
         .then(response => response.json())
         .then(stashToken => {
             localStorage.setItem('token', stashToken.token)
+            localStorage.setItem('user_id', stashToken.user_id)
         })
         event.target.reset()
     }
-
+    
     return (
         <div>
             {showSignUp

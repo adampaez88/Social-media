@@ -23,7 +23,7 @@ export default class Comments extends Component{
 
     addComment = (comment) => {
         // const oneComment = this.state.comments.map(comment => {
-        //     return comment.user_id
+        //     return comment
         // })
         fetch('http://localhost:8000/comments', {
           method: 'POST',
@@ -33,7 +33,7 @@ export default class Comments extends Component{
           body: JSON.stringify({
             'content': comment,
             'post_id': this.props.post.id,
-            'user_id': 1,
+            'user_id': localStorage.user_id,
             'like': 0
           })
         })
@@ -45,7 +45,7 @@ export default class Comments extends Component{
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.addComment(this.state.content)
+        this.addComment(this.state.content) 
         this.setState({
             content: ''
         })
@@ -77,7 +77,7 @@ export default class Comments extends Component{
         const aComment = this.state.comments.find(comment => {
             return comment.id === id
         })
-        if (this.props.post.user_id === aComment.user_id){
+        // if (this.props.post.user_id === aComment.user_id){
             const comments = this.state.comments.filter(comment => {
                 return comment.id !== id
             })
@@ -87,7 +87,7 @@ export default class Comments extends Component{
             fetch(`http://localhost:8000/comments/${id}`, {
                 method: 'DELETE'
             })
-        }
+        // }
     }
 
     eachComment = () => {
@@ -105,6 +105,7 @@ export default class Comments extends Component{
     }
     
     render(){
+        console.log(this.state.comments)
         const {show, handleClick} = this.props
         return (
             <div className='comments-div'>
