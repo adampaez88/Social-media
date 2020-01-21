@@ -11,17 +11,17 @@ class Header extends Component{
         login: false
     }
 
-    showSignUp = (event) => {
-        this.setState({
-            signUp: !this.state.signUp
-        })
-    }
+    // showSignUp = (event) => {
+    //     this.setState({
+    //         signUp: !this.state.signUp
+    //     })
+    // }
 
-    showLogin = (event) => {
-        this.setState({
-            login: !this.state.login
-        })
-    }
+    // showLogin = (event) => {
+    //     this.setState({
+    //         login: !this.state.login
+    //     })
+    // }
 
     logout = (event) => {
         localStorage.removeItem('token')
@@ -53,11 +53,11 @@ class Header extends Component{
                 </form>
 
                 <div className='header-items'>
-                <button onClick={this.showLogin}>Login</button>
-                        <button onClick={this.showSignUp}>Sign up</button>
-                        <button onClick={this.logout}>Logout</button>
-                        {login ? <Auth  showLogin={this.state.login}/> : null}
-                        {signUp ? <Auth showSignUp={this.state.signUp}/> : null}
+                    {/* <button onClick={this.showLogin}>Login</button> */}
+                    {/* <button onClick={this.showSignUp}>Sign up</button> */}
+                    <button onClick={this.logout}>Logout</button>
+                    {/* {login ? <Auth  showLogin={this.state.login}/> : null} */}
+                    {/* {signUp ? <Auth showSignUp={this.state.signUp}/> : null} */}
                 </div>
             </div>
         )

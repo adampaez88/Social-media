@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { act } from 'react-dom/test-utils'
 
 export default class Comments extends Component{
 
@@ -22,9 +23,6 @@ export default class Comments extends Component{
     }
 
     addComment = (comment) => {
-        // const oneComment = this.state.comments.map(comment => {
-        //     return comment
-        // })
         fetch('http://localhost:8000/comments', {
           method: 'POST',
           headers: {
@@ -77,7 +75,8 @@ export default class Comments extends Component{
         const aComment = this.state.comments.find(comment => {
             return comment.id === id
         })
-        // if (this.props.post.user_id === aComment.user_id){
+        console.log(this.props.post)
+        // if (aComment.user_id === aComment.user_id){
             const comments = this.state.comments.filter(comment => {
                 return comment.id !== id
             })
@@ -105,7 +104,7 @@ export default class Comments extends Component{
     }
     
     render(){
-        console.log(this.state.comments)
+        // console.log(this.state.comments)
         const {show, handleClick} = this.props
         return (
             <div className='comments-div'>

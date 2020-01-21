@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Auth({showLogin, showSignUp, setId}) {
+export default function Auth({showLogin, showSignUp, toggleLogin}) {
     const signUp = (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
@@ -47,7 +47,7 @@ export default function Auth({showLogin, showSignUp, setId}) {
             localStorage.setItem('token', stashToken.token)
             localStorage.setItem('user_id', stashToken.user_id)
         })
-        event.target.reset()
+        .then(toggleLogin)
     }
     
     return (
@@ -64,7 +64,7 @@ export default function Auth({showLogin, showSignUp, setId}) {
                 </form>
                 : null
             }
-            {showLogin
+            {showLogin 
                 ? <form onSubmit={userLogin}>
                     <label>Username: </label>
                     <input type='text' name='username' placeholder='Username' required />
@@ -74,7 +74,6 @@ export default function Auth({showLogin, showSignUp, setId}) {
                 </form>
                 : null
             }
-
         </div>
     )
 }

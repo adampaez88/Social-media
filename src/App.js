@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import Header from './components/Header'
 import Footer from './components/Footer'
 import AllPosts from './components/AllPosts'
+import Login from './components/Login'
 import 'font-awesome/css/font-awesome.min.css'
 import './App.css';
 
 class App extends Component{
 
   state = {
-    posts: []
+    posts: [],
+    isLoggedIn: false
   }
 
   componentDidMount(){
@@ -17,6 +19,11 @@ class App extends Component{
       .then(postsData => this.setState({
         posts: postsData
       }))
+  }
+
+  toggleLogin = () => {
+    const {isLoggedIn} = this.state
+    this.setState({isLoggedIn: !isLoggedIn})
   }
 
   addPost = (post) => {
@@ -54,20 +61,25 @@ class App extends Component{
   }
   
   render(){
-    console.log('label it', this.state.user_id)
+    const {isLoggedIn} = this.state
     return (
       <div className="App">
-        <header>
-          <Header setId={this.setId} addPost={this.addPost} />
-        </header>
-  
-        <div>
-          <AllPosts user_id={this.state.user_id} likePost={this.likePost} posts={this.state.posts}/>
-        </div> 
-  
-        <footer>
-          <Footer />
-        </footer>
+
+        {isLoggedIn ?
+          <>
+            <header>
+              <Header addPost={this.addPost} />
+            </header>
+
+            <div>
+              <AllPosts user_id={this.state.user_id} likePost={this.likePost} posts={this.state.posts}/>
+            </div> 
+      
+            <footer>
+              <Footer />
+            </footer>
+          </>
+        : <Login toggleLogin={this.toggleLogin} /> }
       </div>
     );
   }
