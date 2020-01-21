@@ -75,8 +75,7 @@ export default class Comments extends Component{
         const aComment = this.state.comments.find(comment => {
             return comment.id === id
         })
-        console.log(this.props.post)
-        // if (aComment.user_id === aComment.user_id){
+        if (aComment.user_id === +localStorage.user_id){
             const comments = this.state.comments.filter(comment => {
                 return comment.id !== id
             })
@@ -86,7 +85,7 @@ export default class Comments extends Component{
             fetch(`http://localhost:8000/comments/${id}`, {
                 method: 'DELETE'
             })
-        // }
+        }
     }
 
     eachComment = () => {
@@ -104,7 +103,6 @@ export default class Comments extends Component{
     }
     
     render(){
-        // console.log(this.state.comments)
         const {show, handleClick} = this.props
         return (
             <div className='comments-div'>

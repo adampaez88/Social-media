@@ -28,13 +28,8 @@ export default class Post extends Component{
             if (user.id === this.props.post.user_id){
                 return user.username
             }
-        }) //not working
+        }) 
 
-        // const oneUser = this.state.users.find(user => {
-        //     if (users.id === this.props.post.user.id){
-        //         return user.username
-        // })
-        
         const {post, sortByName} = this.props
         return (
             <div className='a-post' >

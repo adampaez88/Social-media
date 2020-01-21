@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Auth from './Auth'
+import './Auth.css'
 
 export default class Login extends Component {
 
@@ -35,8 +36,8 @@ render(){
         <div>
             <h1>Social Alumni</h1>
             <div className='header-items'>
-                <button onClick={this.showLogin}>Login</button>
-                <button onClick={this.showSignUp}>Sign up</button>
+                <button className='auth-buttons' onClick={this.showLogin}>Login</button>
+                <button className='auth-buttons' onClick={this.showSignUp}>Sign up</button>
                 {login ? <Auth toggleLogin={toggleLogin} showLogin={this.state.login}/> : null}
                 {signUp ? <Auth toggleLogin={toggleLogin} showSignUp={this.state.signUp}/> : null}
             </div>
