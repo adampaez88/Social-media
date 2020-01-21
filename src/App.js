@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header'
 import Footer from './components/Footer'
 import AllPosts from './components/AllPosts'
-import Login from './components/Login'
+import Login from './components/Auth/Login'
 import 'font-awesome/css/font-awesome.min.css'
 import './App.css';
 
@@ -22,8 +22,15 @@ class App extends Component{
   }
 
   toggleLogin = () => {
-    const {isLoggedIn} = this.state
-    this.setState({isLoggedIn: !isLoggedIn})
+    if (localStorage.token !== 'undefined'){
+      this.setState({isLoggedIn: true})
+    }
+  }
+
+  toggleLogout = () => {
+    if (localStorage.token){
+      this.setState({isLoggedIn: false})
+    }
   }
 
   addPost = (post) => {
@@ -40,7 +47,7 @@ class App extends Component{
       body: JSON.stringify({
         'image_url': post.image_url,
         'content': post.content,
-        'user_id': 1
+        'user_id': localStorage.user_id
       })
     })
   }
@@ -68,7 +75,7 @@ class App extends Component{
         {isLoggedIn ?
           <>
             <header>
-              <Header addPost={this.addPost} />
+              <Header toggleLogout={this.toggleLogout} addPost={this.addPost} />
             </header>
 
             <div>

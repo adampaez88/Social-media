@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PostForm from './PostForm'
-import Auth from './Auth'
+import Auth from './Auth/Auth'
 
 class Header extends Component{
 
@@ -24,7 +24,8 @@ class Header extends Component{
     // }
 
     logout = (event) => {
-        localStorage.removeItem('token')
+        this.props.toggleLogout()
+        localStorage.clear()
     }
 
     handleClick = () => {
