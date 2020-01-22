@@ -1,4 +1,4 @@
-/* html, body, div, span, applet, object, iframe, */
+html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -25,11 +25,10 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
-  background-color: #E6E6EA;
-  /* background-color: #A3BAC3; */
   margin-bottom: 5%;
-
+  background-image: url('./images.jpeg');
 }
+
 ol, ul {
 	list-style: none;
 }
@@ -46,50 +45,22 @@ table {
 	border-spacing: 0;
 }
 
+body {
+  line-height: 1;
+  margin-bottom: 5%;
+  background-image: url('./images.jpeg')center fixed no-repeat;
+  background-size: 100% 100%;
+}
+
 .App {
   text-align: center;
+  
 }
 
 button {
   cursor: pointer;
-}
-
-header {
-  /* position: sticky; */
-  /* top: 0; */
-  /* background-color: rgb(58, 57, 57); */
-  background-color: #1ebce1;
-  height: 5.5rem;
-
-}
-
-.header-div {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.header-items {
-  margin-top: 1.75rem;
-  text-align-last: center;
-}
-
-.header-buttons {
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.fa-search {
-  cursor: pointer;
-  margin-left: .5rem;
-  font-weight: 900;
-}
-
-.form-div {
-  visibility: hidden;
-  display: flex;
-  justify-content: space-evenly;
-  margin: 2%;
-  text-align-last: center;
+  -webkit-filter: drop-shadow(3px 3px 3px rgb(250, 242, 250));
+  filter: drop-shadow(1.5px 1.5px 1.5px rgb(250, 242, 250));
 }
 
 .post-div {
@@ -152,50 +123,4 @@ aside {
 
 .fa-thumbs-up {
   font-size: 1rem;
-}
-
-.comments-form {
-  margin-bottom: 2%;
-}
-
-.comment-submit {
-  cursor: pointer;
-}
-
-.a-comment {
-  margin-bottom: 2%;
-}
-
-.comment-list {
-  display: flex;
-  justify-content: space-between;
-  margin: 1%;
-}
-
-.fa-trash {
-  font-size: 1rem;
-}
-
-.fa-star {
-  font-size: 1rem;
-}
-
-footer {
-  /* background-color: rgb(58, 57, 57); */
-  background-color: #1ebce1;
-  height: 5rem;
-  position:fixed;bottom:0;left:0;right:0;
-  display: flex;
-  justify-content: space-evenly;  
-}
-
-
-.footer-items {
-  margin-top: 1.75rem;
-  color: wheat;
-  font-size: 1.5rem;
-}
-
-a {
-  text-decoration: none;
 }

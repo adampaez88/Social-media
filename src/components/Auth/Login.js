@@ -6,7 +6,6 @@ export default class Login extends Component {
 
     state = {
         isClicked: false,
-        show: false,
         signUp: false,
         login: false
     }
@@ -31,17 +30,28 @@ export default class Login extends Component {
     
 render(){
     const {toggleLogin} = this.props
-    const {show, signUp, login} = this.state
+    const {signUp, login} = this.state
     return (
-        <div>
-            <h1>Social Alumni</h1>
-            <div className='header-items'>
-                <button className='auth-buttons' onClick={this.showLogin}>Login</button>
-                <button className='auth-buttons' onClick={this.showSignUp}>Sign up</button>
-                {login ? <Auth toggleLogin={toggleLogin} showLogin={this.state.login}/> : null}
-                {signUp ? <Auth toggleLogin={toggleLogin} showSignUp={this.state.signUp}/> : null}
+        <div className='auth-button-container'>
+            <div>
+                <h1 className='login-page-h1'>Alumni Social</h1>
             </div>
-            
+
+            <div className='login-logout'>
+                <div className='auth-buttons'>
+                    <button className='auth-button' onClick={this.showLogin}>Login</button>
+                    <button className='auth-button' onClick={this.showSignUp}>Sign up</button>
+                </div>
+
+                <div className='auth-forms' >
+                    {login ? <Auth toggleLogin={toggleLogin} showLogin={this.state.login}/> : null}
+                </div>
+
+                <div className='signup-form'>
+                    {signUp ? <Auth toggleLogin={toggleLogin} showSignUp={this.state.signUp}/> : null}
+                </div>
+                
+            </div>
         </div>
     )
 }

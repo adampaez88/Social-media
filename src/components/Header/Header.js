@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import PostForm from './PostForm'
-import Auth from './Auth/Auth'
+import PostForm from '../PostForm'
+import Filter from './Filter'
+import Auth from '../Auth/Auth'
+import './Header.css'
+import logo from './omg.png'
 
 class Header extends Component{
 
@@ -10,18 +13,6 @@ class Header extends Component{
         signUp: false,
         login: false
     }
-
-    // showSignUp = (event) => {
-    //     this.setState({
-    //         signUp: !this.state.signUp
-    //     })
-    // }
-
-    // showLogin = (event) => {
-    //     this.setState({
-    //         login: !this.state.login
-    //     })
-    // }
 
     logout = (event) => {
         this.props.toggleLogout()
@@ -35,9 +26,13 @@ class Header extends Component{
     }
 
     render(){
-        const {show, signUp, login} = this.state
+        const {show} = this.state
         return(
             <div className='header-div'>
+                <div>
+                    <img src={logo} className='logo' />
+                </div>
+
                 <div className='header-items'>
                     <button className='header-buttons' onClick={this.handleClick}>
                         {show ? 'Close' : 'Add Post'}
@@ -48,17 +43,13 @@ class Header extends Component{
                     <PostForm handleClick={this.handleClick} addPost={this.props.addPost}/>
                 </div>
 
-                <form className='header-items'>
-                    <input type='text' placeholder='search'/>
-                    <i type='submit' className='fa fa-search'></i>
-                </form>
+                <div>
+                    <Filter updateSearch={this.props.updateSearch} />
+                   
+                </div>
 
                 <div className='header-items'>
-                    {/* <button onClick={this.showLogin}>Login</button> */}
-                    {/* <button onClick={this.showSignUp}>Sign up</button> */}
-                    <button onClick={this.logout}>Logout</button>
-                    {/* {login ? <Auth  showLogin={this.state.login}/> : null} */}
-                    {/* {signUp ? <Auth showSignUp={this.state.signUp}/> : null} */}
+                    <button className='logout-button' onClick={this.logout}>Logout</button>
                 </div>
             </div>
         )

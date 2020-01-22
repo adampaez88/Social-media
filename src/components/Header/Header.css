@@ -1,0 +1,45 @@
+header {
+    background-color: #1ebce1;
+    height: 5.5rem;
+}
+
+.logo {
+  height: 17.5%;
+}
+  
+.header-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-items {
+  margin-top: 1.75rem;
+  text-align-last: center;
+}
+
+.header-buttons {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.fa-search {
+  cursor: pointer;
+  margin-left: .5rem;
+  font-weight: 900;
+}
+
+.form-div {
+  visibility: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2%;
+  text-align-last: center;
+}
+
+.logout-button {
+  color: red;
+  margin-right: 1rem;
+  height: 1.5rem;
+  -webkit-filter: drop-shadow(3px 3px 3px rgb(250, 242, 250));
+  filter: drop-shadow(2px 2px 2px rgb(250, 242, 250));
+}
