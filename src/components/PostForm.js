@@ -15,7 +15,7 @@ export default class PostForm extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault()
+        // event.preventDefault()
         this.props.addPost(this.state)
         this.setState({
             image_url: '',

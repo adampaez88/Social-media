@@ -81,6 +81,23 @@ class App extends Component{
     })
   }
 
+  deleteClick = (id) => {
+    const aPost = this.state.posts.find(post => {
+        return post.id === id
+    })
+    if (aPost.user_id === +localStorage.user_id){
+        const posts = this.state.posts.filter(post => {
+            return post.id !== id
+        })
+        this.setState({
+            posts
+        })  
+        fetch(`http://localhost:8000/posts/${id}`, {
+            method: 'DELETE'
+        })
+    }
+}
+
   likePost = (id) => {
     const likedPost = this.state.posts.find(post => {
         return post.id === id
@@ -113,7 +130,7 @@ class App extends Component{
             <div className='main-container'>
               <AllPosts 
                 user_id={this.state.user_id} likePost={this.likePost} posts={this.state.posts}
-                users={search ? filteredUsers : users}
+                users={search ? filteredUsers : users} deleteClick={this.deleteClick}
               />
             </div> 
       

@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PostForm from '../PostForm'
 import Filter from './Filter'
-import Auth from '../Auth/Auth'
 import './Header.css'
-import logo from './omg.png'
+import logo from './AlumniSocial.png'
 
 class Header extends Component{
 

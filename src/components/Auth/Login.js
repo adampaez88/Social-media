@@ -12,21 +12,23 @@ export default class Login extends Component {
 
     showSignUp = (event) => {
         this.setState({
-            signUp: !this.state.signUp
+            signUp: !this.state.signUp,
+            login: false
         })
     }
 
     showLogin = (event) => {
         this.setState({
-            login: !this.state.login
+            login: !this.state.login,
+            signUp: false
         })
     }
 
-    handleClick = () => {
-        this.setState({
-            show: !this.state.show
-        })
-    }
+    // handleClick = () => {
+    //     this.setState({
+    //         show: !this.state.show
+    //     })
+    // }
     
 render(){
     const {toggleLogin} = this.props
@@ -50,7 +52,6 @@ render(){
                 <div className='signup-form'>
                     {signUp ? <Auth toggleLogin={toggleLogin} showSignUp={this.state.signUp}/> : null}
                 </div>
-                
             </div>
         </div>
     )

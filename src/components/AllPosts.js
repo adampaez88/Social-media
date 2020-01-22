@@ -2,7 +2,7 @@ import React from 'react'
 import ChatRoom from './ChatRoom'
 import Post from './Post'
 
-function AllPosts({posts, likePost}){
+function AllPosts({posts, likePost, deleteClick}){
 
     const sortByName = (a, b) => { 
         if(a.content > b.content){ 
@@ -15,7 +15,7 @@ function AllPosts({posts, likePost}){
     };
 
     const eachPost = posts.sort(sortByName).map(post => {
-        return  <Post sortByName={sortByName} likePost={likePost} post={post} />
+        return  <Post deleteClick={deleteClick} sortByName={sortByName} likePost={likePost} post={post} />
     })
 
     return(
