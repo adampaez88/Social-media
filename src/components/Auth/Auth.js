@@ -21,8 +21,10 @@ export default function Auth({ showLogin, showSignUp, toggleLogin }) {
             })
         })
         .then(response => response.json())
-        .then(stashToken => {
-            localStorage.setItem('token', stashToken.token)
+        .then(result => {
+            localStorage.setItem('token', result.token)
+            localStorage.setItem('user_id', result.user_id)
+            localStorage.setItem('username', result.username)
         })
         event.target.reset()
     }

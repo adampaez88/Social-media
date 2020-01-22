@@ -89,13 +89,6 @@ export default class Comments extends Component{
     }
 
     eachComment = () => {
-        // const usersName = this.state.comments.find(comment => {
-        //     console.log(usersName)
-        //     if (usersName){
-
-        //     }
-        // })
-
         return this.filterComments().sort(this.props.sortByName).map(comment => {
             return( 
                 <div className='comment-list'>
