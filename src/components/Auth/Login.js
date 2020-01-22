@@ -23,38 +23,31 @@ export default class Login extends Component {
             signUp: false
         })
     }
-
-    // handleClick = () => {
-    //     this.setState({
-    //         show: !this.state.show
-    //     })
-    // }
     
-render(){
-    const {toggleLogin} = this.props
-    const {signUp, login} = this.state
-    return (
-        <div className='auth-button-container'>
-            <div>
-                <h1 className='login-page-h1'>Alumni Social</h1>
+    render(){
+        const {toggleLogin} = this.props
+        const {signUp, login} = this.state
+        return (
+            <div className='auth-button-container'>
+                <div>
+                    <h1 className='login-page-h1'>Alumni Social</h1>
+                </div>
+
+                <div className='login-logout'>
+                    <div className='auth-buttons'>
+                        <button className='auth-button' onClick={this.showLogin}>Login</button>
+                        <button className='auth-button' onClick={this.showSignUp}>Sign up</button>
+                    </div>
+
+                    <div className='auth-forms' >
+                        {login ? <Auth toggleLogin={toggleLogin} showLogin={this.state.login}/> : null}
+                    </div>
+
+                    <div className='signup-form'>
+                        {signUp ? <Auth toggleLogin={toggleLogin} showSignUp={this.state.signUp}/> : null}
+                    </div>
+                </div>
             </div>
-
-            <div className='login-logout'>
-                <div className='auth-buttons'>
-                    <button className='auth-button' onClick={this.showLogin}>Login</button>
-                    <button className='auth-button' onClick={this.showSignUp}>Sign up</button>
-                </div>
-
-                <div className='auth-forms' >
-                    {login ? <Auth toggleLogin={toggleLogin} showLogin={this.state.login}/> : null}
-                </div>
-
-                <div className='signup-form'>
-                    {signUp ? <Auth toggleLogin={toggleLogin} showSignUp={this.state.signUp}/> : null}
-                </div>
-            </div>
-        </div>
-    )
-}
-   
+        )
+    }
 }
