@@ -1,0 +1,27 @@
+
+.comments-form {
+    margin-bottom: 2%;
+  }
+  
+  .comment-submit {
+    cursor: pointer;
+  }
+  
+  .a-comment {
+    margin-bottom: 2%;
+  }
+  
+  .comment-list {
+    display: flex;
+    justify-content: space-between;
+    margin: 1%;
+  }
+  
+  .fa-trash {
+    font-size: 1rem;
+  }
+  
+  .fa-star {
+    font-size: 1rem;
+  }
+  

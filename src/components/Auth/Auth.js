@@ -1,7 +1,7 @@
 import React from 'react'
 import './Auth.css'
 
-export default function Auth({showLogin, showSignUp, toggleLogin}) {
+export default function Auth({ showLogin, showSignUp, toggleLogin }) {
     const signUp = (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
@@ -47,23 +47,25 @@ export default function Auth({showLogin, showSignUp, toggleLogin}) {
         .then(stashToken => {
             localStorage.setItem('token', stashToken.token)
             localStorage.setItem('user_id', stashToken.user_id)
+            localStorage.setItem('username', stashToken.username)
         })
         .then(toggleLogin)
     }
-    
+
     return (
         <div>
             {showSignUp
-                   ? <form onSubmit={signUp}>
-                        <label>Email: </label>
-                        <input type='text' name='email' placeholder='Email' required />
-                        <label>Username: </label>
-                        <input type='text' name='username' placeholder='Username' required />
-                        <label>Password: </label>
-                        <input type='password' name='password' placeholder='Password' required/>
-                        <input type='submit' value='submit' />
-                    </form>
-                    : null
+                ? 
+                <form onSubmit={signUp}>
+                    <label>Email: </label>
+                    <input type='text' name='email' placeholder='Email' required />
+                    <label>Username: </label>
+                    <input type='text' name='username' placeholder='Username' required />
+                    <label>Password: </label>
+                    <input type='password' name='password' placeholder='Password' required/>
+                    <input type='submit' value='submit' />
+                </form>
+                : null
             }
             {showLogin 
                 ? <form onSubmit={userLogin}>

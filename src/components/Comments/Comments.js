@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { act } from 'react-dom/test-utils'
+import './Comments.css'
 
 export default class Comments extends Component{
 
@@ -92,7 +92,7 @@ export default class Comments extends Component{
         return this.filterComments().sort(this.props.sortByName).map(comment => {
             return( 
                 <div className='comment-list'>
-                 <li className='a-comment'>{comment.content}</li>
+                    <li className='a-comment'>{comment.content}</li>
                  <div>
                     <button onClick={() => this.likeClick(comment.id)}><i className="fa fa-star"></i> {comment.like}</button>
                     <button onClick={() => this.deleteClick(comment.id)}><i className="fa fa-trash"></i></button>

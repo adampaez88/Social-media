@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 import AllPosts from './components/AllPosts'
 import Login from './components/Auth/Login'
 import 'font-awesome/css/font-awesome.min.css'
@@ -10,19 +10,25 @@ class App extends Component{
 
   state = {
     posts: [],
-    isLoggedIn: false
+    isLoggedIn: false,
+    users: [],
+    filteredUsers: [],
+    search: ''
   }
 
   componentDidMount(){
+    this.toggleLogin()
     fetch('http://localhost:8000/posts')
       .then(response => response.json())
-      .then(postsData => this.setState({
-        posts: postsData
-      }))
+      .then(posts => this.setState({posts}))
+
+    fetch('http://localhost:8000/users')
+      .then(response => response.json())
+      .then(this.userState)
   }
 
   toggleLogin = () => {
-    if (localStorage.token !== 'undefined'){
+    if (localStorage.token !== 'undefined' && localStorage.token){
       this.setState({isLoggedIn: true})
     }
   }
@@ -33,8 +39,31 @@ class App extends Component{
     }
   }
 
+  userState = (users) => {
+    this.setState({
+      users: users,
+      filteredUsers: users
+    })
+  }
+
+  updateSearch = (searchTerm) => {
+    this.setState({
+      search: searchTerm
+    })
+    this.nameFilter(searchTerm)
+  }
+
+  nameFilter = (searchTerm) => {
+    const filteredUsers = this.state.users.filter(user => {
+      return user.username.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+    this.setState({filteredUsers})
+  }
+
   addPost = (post) => {
     const {posts} = this.state 
+    const user = {username: localStorage.getItem('username')}
+    post.user = user
     this.setState({
       posts: [...posts, post]
     })
@@ -68,21 +97,27 @@ class App extends Component{
   }
   
   render(){
-    const {isLoggedIn} = this.state
+    const {isLoggedIn, search, users, filteredUsers} = this.state
     return (
       <div className="App">
 
         {isLoggedIn ?
           <>
             <header>
-              <Header toggleLogout={this.toggleLogout} addPost={this.addPost} />
+              <Header 
+                toggleLogout={this.toggleLogout} addPost={this.addPost}
+                nameFilter={this.nameFilter} updateSearch={this.updateSearch}
+              />
             </header>
 
-            <div>
-              <AllPosts user_id={this.state.user_id} likePost={this.likePost} posts={this.state.posts}/>
+            <div className='main-container'>
+              <AllPosts 
+                user_id={this.state.user_id} likePost={this.likePost} posts={this.state.posts}
+                users={search ? filteredUsers : users}
+              />
             </div> 
       
-            <footer>
+            <footer className='footer-container'>
               <Footer />
             </footer>
           </>

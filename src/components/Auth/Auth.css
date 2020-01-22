@@ -1,0 +1,46 @@
+.login-page-h1 {
+    margin-top: 15%;
+    font-size: 3rem;
+    color:  #1ebce1;
+}
+
+.login-logout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.auth-forms {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    margin-top: 4%;
+}
+
+.auth-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.auth-button {
+    border: 1px solid #3498db;
+    background: none;
+    padding: 3% 12%;
+    font-size: 1rem;
+    font-family: "montserrat";
+    font-weight: 700;
+    cursor: pointer;
+    width: 30%;
+    color: #3498db;
+    transition: 0.8s;
+    overflow: hidden;
+    margin-top: 4%;
+}
+
+.auth-buttons:hover {
+    color: #fff;
+}
+
+.signup-form {
+    margin-top: 4%;
+}
