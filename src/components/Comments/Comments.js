@@ -88,11 +88,20 @@ export default class Comments extends Component{
         }
     }
 
+    displayName = (comment) => {
+        if (comment.user){
+            return comment.user.username
+        } else {
+            return localStorage.username
+        }
+    }
+
     eachComment = () => {
         return this.filterComments().sort(this.props.sortByName).map(comment => {
+
             return( 
                 <div className='comment-list'>
-                    <li className='a-comment'>{comment.content}</li>
+                    <li className='a-comment'>{this.displayName(comment)}: {comment.content}</li>
                  <div>
                     <button onClick={() => this.likeClick(comment.id)}><i className="fa fa-star"></i> {comment.like}</button>
                     <button onClick={() => this.deleteClick(comment.id)}><i className="fa fa-trash"></i></button>

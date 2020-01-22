@@ -26,6 +26,7 @@ export default function Auth({ showLogin, showSignUp, toggleLogin }) {
             localStorage.setItem('user_id', result.user_id)
             localStorage.setItem('username', result.username)
         })
+        .then(toggleLogin)
         event.target.reset()
     }
 
