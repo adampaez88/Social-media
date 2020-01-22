@@ -11,8 +11,7 @@ class App extends Component{
   state = {
     posts: [],
     isLoggedIn: false,
-    users: [],
-    filteredUsers: [],
+    filteredPosts: [],
     search: ''
   }
 
@@ -21,10 +20,7 @@ class App extends Component{
     fetch('http://localhost:8000/posts')
       .then(response => response.json())
       .then(posts => this.setState({posts}))
-
-    fetch('http://localhost:8000/users')
-      .then(response => response.json())
-      .then(this.userState)
+      // .then(this.userState)
   }
 
   toggleLogin = () => {
@@ -39,26 +35,27 @@ class App extends Component{
     }
   }
 
-  userState = (users) => {
-    this.setState({
-      users: users,
-      filteredUsers: users
-    })
-  }
+  // userState = (posts) => {
+  //   this.setState({
+  //     posts: posts,
+  //     filteredPosts: posts
+  //   })
+  // }
 
-  updateSearch = (searchTerm) => {
-    this.setState({
-      search: searchTerm
-    })
-    this.nameFilter(searchTerm)
-  }
+  // updateSearch = (searchTerm) => {
+  //   this.setState({
+  //     search: searchTerm
+  //   })
+  //   this.nameFilter(searchTerm)
+  // }
 
-  nameFilter = (searchTerm) => {
-    const filteredUsers = this.state.users.filter(user => {
-      return user.username.toLowerCase().includes(searchTerm.toLowerCase())
-    })
-    this.setState({filteredUsers})
-  }
+  // nameFilter = (searchTerm) => {
+  //   const filteredPosts = this.state.posts.filter(post => {
+  //     console.log(post)
+  //     return post.toLowerCase().includes(searchTerm.toLowerCase())
+  //   })
+  //   this.setState({filteredPosts})
+  // }
 
   addPost = (post) => {
     const {posts} = this.state 
@@ -96,7 +93,7 @@ class App extends Component{
             method: 'DELETE'
         })
     }
-}
+  }
 
   likePost = (id) => {
     const likedPost = this.state.posts.find(post => {
@@ -114,7 +111,7 @@ class App extends Component{
   }
   
   render(){
-    const {isLoggedIn, search, users, filteredUsers} = this.state
+    const {isLoggedIn, search, posts, filteredPosts} = this.state
     return (
       <div className="App">
 
@@ -129,8 +126,10 @@ class App extends Component{
 
             <div className='main-container'>
               <AllPosts 
-                user_id={this.state.user_id} likePost={this.likePost} posts={this.state.posts}
-                users={search ? filteredUsers : users} deleteClick={this.deleteClick}
+                user_id={this.state.user_id} likePost={this.likePost} 
+                posts={this.state.posts}
+                // posts={search ? filteredPosts : posts} 
+                deleteClick={this.deleteClick}
               />
             </div> 
       
