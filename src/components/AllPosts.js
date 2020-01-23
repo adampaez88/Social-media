@@ -1,5 +1,5 @@
 import React from 'react'
-import ChatRoom from './ChatRoom'
+// import ChatRoom from './ChatRoom'
 import Post from './Post'
 
 function AllPosts({posts, likePost, deleteClick}){
