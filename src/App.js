@@ -19,8 +19,8 @@ class App extends Component{
     this.toggleLogin()
     fetch('http://localhost:8000/posts')
       .then(response => response.json())
-      .then(posts => this.setState({posts}))
-      // .then(this.userState)
+      // .then(posts => this.setState({posts}))
+      .then(this.postState)
   }
 
   toggleLogin = () => {
@@ -35,27 +35,26 @@ class App extends Component{
     }
   }
 
-  // userState = (posts) => {
-  //   this.setState({
-  //     posts: posts,
-  //     filteredPosts: posts
-  //   })
-  // }
+  postState = (posts) => {
+    this.setState({
+      posts: posts,
+      filteredPosts: posts
+    })
+  }
 
-  // updateSearch = (searchTerm) => {
-  //   this.setState({
-  //     search: searchTerm
-  //   })
-  //   this.nameFilter(searchTerm)
-  // }
+  updateSearch = (searchTerm) => {
+    this.setState({
+      search: searchTerm
+    })
+    this.nameFilter(searchTerm)
+  }
 
-  // nameFilter = (searchTerm) => {
-  //   const filteredPosts = this.state.posts.filter(post => {
-  //     console.log(post)
-  //     return post.toLowerCase().includes(searchTerm.toLowerCase())
-  //   })
-  //   this.setState({filteredPosts})
-  // }
+  nameFilter = (searchTerm) => {
+    const filteredPosts = this.state.posts.filter(post => {
+      return post.user.username.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+    this.setState({filteredPosts})
+  }
 
   addPost = (post) => {
     const {posts} = this.state 
@@ -77,7 +76,7 @@ class App extends Component{
       })
     })
   }
-
+ 
   deleteClick = (id) => {
     const aPost = this.state.posts.find(post => {
         return post.id === id
@@ -127,8 +126,8 @@ class App extends Component{
             <div className='main-container'>
               <AllPosts 
                 user_id={this.state.user_id} likePost={this.likePost} 
-                posts={this.state.posts}
-                // posts={search ? filteredPosts : posts} 
+                // posts={this.state.posts}
+                posts={search ? filteredPosts : posts} 
                 deleteClick={this.deleteClick}
               />
             </div> 
