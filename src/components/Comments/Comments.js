@@ -36,9 +36,7 @@ export default class Comments extends Component{
           })
         })
         .then(response => response.json())
-        .then(comment => {
-            this.setState({comments: [...this.state.comments, comment]})
-        })
+        .then(comment => {this.setState({comments: [...this.state.comments, comment]})})
     }
 
     handleSubmit = (event) => {
