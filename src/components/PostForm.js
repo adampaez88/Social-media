@@ -15,7 +15,7 @@ export default class PostForm extends Component {
     }
 
     handleSubmit = (event) => {
-        // event.preventDefault()
+        event.preventDefault()
         this.props.addPost(this.state)
         this.setState({
             image_url: '',
@@ -35,6 +35,7 @@ export default class PostForm extends Component {
                           name='image_url'
                           onChange={this.handleChange}
                           value={this.state.image_url}
+                          alt='failed loading link'
                           required
                     />
                     <label> Content: </label>
