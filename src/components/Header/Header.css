@@ -1,15 +1,17 @@
 header {
-    background-color: #1ebce1;
-    height: 5.5rem;
-}
-
-.logo {
-  height: 17.5%;
+  background-color: #1ebce1;
+  height: 5.5rem;
+  position:fixed;top:0;left:0;right:0;
 }
   
 .header-div {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;;
+}
+
+.logo {
+  height: 8.75%;
+  position: fixed;
 }
 
 .header-items {
