@@ -25,9 +25,9 @@ function AllPosts({posts, likePost, deleteClick}){
                 <div className='news-feed-container'>
                     {eachPost}
                 </div>
-                    <aside>
+                    {/* <aside>
                         <ChatRoom />
-                    </aside>
+                    </aside> */}
             </div>
         </div>
        

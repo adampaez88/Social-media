@@ -68,7 +68,7 @@ button {
   justify-content: space-between;
 }
 
-aside {
+/* aside {
   position: sticky;
   top: 0;
   width: 25%;
@@ -82,19 +82,27 @@ aside {
   float: right;
   box-shadow: inset 5px 0 5px -5px #29627e;
   font-style: italic;
+} */
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .news-feed {
-  margin-right: 27%;
+  /* margin-right: 27%; */
   margin-top: 1%;
-  font-size: 2rem;
+  /* font-size: 2rem; */
+  font-size: 3rem;
 }
 
 .news-feed-container {
   height: fit-content;
-  width: 50%;
+  width: 100%;
+  /* width: 50%; */
   margin-bottom: 2%;
-  margin-left: 11%;
+  /* margin-left: 25%; */
   margin-top: 2%;
 }
 
@@ -102,7 +110,8 @@ aside {
   border: solid grey;
   background-color: black;
   color: aliceblue;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  /* font-size: 1.5rem; */
   margin: 1%;
 }
 
