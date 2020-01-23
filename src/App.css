@@ -113,13 +113,14 @@ button {
   color: aliceblue;
   font-size: 2rem;
   /* font-size: 1.5rem; */
+  width: 50rem;
   margin: 1%;
 }
 
 .a-post > img {
   margin-top: 2%;
   margin-bottom: 2%;
-  height: 35rem;
+  height: 31rem;
   width: 80%;
 }
 
