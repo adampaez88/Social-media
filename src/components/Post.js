@@ -28,7 +28,7 @@ export default class Post extends Component{
         return (
             <div className='a-post' >
                 <h1>User: {post.user.username}</h1>
-                <img src={post.image_url} alt='Post Pic'/>
+                <img src={post.image_url} alt='failed loading link'/>
                 <div className='post-buttons'>
                     <button onClick={ () => this.props.likePost(post.id)}><i class="fa fa-thumbs-up"></i> {post.like}</button> 
                     <button onClick={() => this.props.deleteClick(post.id)}><i className="fa fa-trash"></i></button>

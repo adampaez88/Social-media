@@ -22,7 +22,6 @@ export default function Auth({ showLogin, showSignUp, toggleLogin }) {
         })
         .then(response => response.json())
         .then(result => {
-            console.log(result)
             localStorage.setItem('token', result.token)
             localStorage.setItem('user_id', result.user.id)
             localStorage.setItem('username', result.user.username)

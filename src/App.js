@@ -59,11 +59,6 @@ class App extends Component{
   addPost = (post) => {
     const {posts} = this.state 
     const user = {username: localStorage.getItem('username')}
-    post.user = user
-    this.setState({
-      posts: [...posts, post]
-    })
-    
     fetch('http://localhost:8000/posts', {
       method: 'POST',
       headers: {
@@ -73,6 +68,13 @@ class App extends Component{
         'image_url': post.image_url,
         'content': post.content,
         'user_id': localStorage.user_id
+      })
+    })
+    .then(response => response.json())
+    .then(newPost => {
+      newPost.user = user
+      this.setState({
+        posts: [...posts, newPost]
       })
     })
   }

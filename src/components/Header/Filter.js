@@ -9,7 +9,7 @@ export default function Filter({updateSearch}) {
     return (
         <>
             <form className='header-items'>                    
-                <input type='text' placeholder='search' onChange={handleSearch} />
+                <input type='text' placeholder='search by username' onChange={handleSearch} />
                 <i type='submit' className='fa fa-search'></i>
             </form>
         </>
