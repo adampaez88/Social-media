@@ -76,6 +76,8 @@ class App extends Component{
         'user_id': localStorage.user_id
       })
     })
+    // .then(response => response.json())
+    // .then(post => this.setState({posts: [...posts, post]})
   }
 
   deleteClick = (id) => {
